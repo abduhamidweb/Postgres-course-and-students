@@ -46,6 +46,7 @@ export async function fetchUPDATE(queryString, ...params) {
   let client = await pool.connect()
   try {
     const id = params[1].id;
+    console.log('id :', id);
     const {name, month, price } = params[0];
     await client.query(queryString, [
       name,

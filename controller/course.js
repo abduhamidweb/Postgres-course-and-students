@@ -30,7 +30,6 @@ export default {
   },
   UPDATE: async (req, res) => {
     const { id } = req.params;
-    const {name, month, price} = req.body
         try {
           await fetchUPDATE(
             'UPDATE course SET name = $1,  month= $2, price = $3 WHERE id = $4',
