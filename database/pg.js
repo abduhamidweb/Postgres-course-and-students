@@ -23,8 +23,6 @@ export async function AllFetchDatas(queryString) {
     console.log('error :', error)
   }
 }
-
-// AllFetchDatas()
 export async function fetch(queryString, ...params) {
   let client = await pool.connect()
   try {
@@ -36,7 +34,11 @@ export async function fetch(queryString, ...params) {
     console.log('error :', error)
   }
 }
-// fetch(
-//   'Select * from students where id = $1','deb0ced9-87a9-493a-aaba-cc0aa7c44b55'
-// )
-
+export async function fetchPost(queryString, ...params) {
+  let client = await pool.connect()
+  try {
+    await client.query(queryString, params.length ? params : null)
+  } catch (error) {
+    console.log('error :', error)
+  }
+}
