@@ -1,4 +1,4 @@
-import { AllFetchDatas, fetch, fetchPost } from '../database/pg.js'
+import { AllFetchDatas, fetch, fetchPost, fetchUPDATE } from '../database/pg.js'
 import QueryFetch from '../models/course.model.js'
 export default {
   GET: async (req, res) => {
@@ -28,4 +28,20 @@ export default {
       res.status(500).json({ message: error.message })
     }
   },
+  UPDATE: async (req, res) => {
+    const { id } = req.params;
+    const {name, month, price} = req.body
+        try {
+          await fetchUPDATE(
+            'UPDATE course SET name = $1,  month= $2, price = $3 WHERE id = $4',
+            req.body,
+            {
+             id: id
+           }
+          )
+          res.status(200).json({ message: 'cuurse deleted' })
+        } catch (error) {
+          res.status(500).json({ message: error.message })
+        }
+  }
 }

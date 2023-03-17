@@ -5,4 +5,5 @@ const course = Router();
 course.get('/course/:id', courses.GET);
 course.post("/course", courses.POST);
 course.delete("/course/:id", courses.DELETE);
+course.put('/course/:id', courses.UPDATE);
 export default course;

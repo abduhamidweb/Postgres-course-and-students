@@ -42,3 +42,18 @@ export async function fetchPost(queryString, ...params) {
     console.log('error :', error)
   }
 }
+export async function fetchUPDATE(queryString, ...params) {
+  let client = await pool.connect()
+  try {
+    const id = params[1].id;
+    const {name, month, price } = params[0];
+    await client.query(queryString, [
+      name,
+      month,
+      price,
+      id
+    ])
+  } catch (error) {
+    console.log('error :', error)
+  }
+}
