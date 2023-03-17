@@ -29,18 +29,18 @@ export default {
     }
   },
   UPDATE: async (req, res) => {
-    const { id } = req.params;
-        try {
-          await fetchUPDATE(
-            'UPDATE course SET name = $1,  month= $2, price = $3 WHERE id = $4',
-            req.body,
-            {
-             id: id
-           }
-          )
-          res.status(200).json({ message: 'cuurse deleted' })
-        } catch (error) {
-          res.status(500).json({ message: error.message })
+    const { id } = req.params
+    try {
+      await fetchUPDATE(
+        'UPDATE course SET name = $1,  month= $2, price = $3 WHERE id = $4',
+        req.body,
+        {
+          id: id,
         }
-  }
+      )
+      res.status(200).json({ message: 'cuurse deleted' })
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  },
 }
